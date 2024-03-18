@@ -12,17 +12,33 @@ class Solution:
         # return Counter(s) == Counter(t)
 
         # Solution 4:
-        if len(s) != len(t):
-            return False
+        # if len(s) != len(t):
+        #     return False
 
-        countS, countT = {}, {}
+        # countS, countT = {}, {}
 
-        for ch1, ch2 in zip(s, t):
-            countS[ch1] = 1 + countS.get(ch1, 0)
-            countT[ch2] = 1 + countT.get(ch2, 0)
+        # for ch1, ch2 in zip(s, t):
+        #     countS[ch1] = 1 + countS.get(ch1, 0)
+        #     countT[ch2] = 1 + countT.get(ch2, 0)
 
-        for k, v in countS.items():
-            if v != countT.get(k, 0):
+        # for k, v in countS.items():
+        #     if v != countT.get(k, 0):
+        #         return False
+
+        # return True
+
+        # Solution 5:
+        numberOfLetters = 26
+        count = [0 for i in range(numberOfLetters)]
+
+        for ch in s:
+            count[ord(ch) - ord('a')] += 1
+
+        for ch in t:
+            count[ord(ch) - ord('a')] -= 1
+
+        for c in count:
+            if c != 0:
                 return False
 
         return True
