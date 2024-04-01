@@ -3,6 +3,8 @@ class Graph:
     def __init__(self):
         self.adj_list = {}
 
+# ------------ add vertex -------------
+
     # method to add vertex
     def add_vertex(self, vertex):
         # check if vertex exists in the map
@@ -12,6 +14,8 @@ class Graph:
         self.adj_list[vertex] = []
         return True
     
+# ------------ remove vertex -------------
+
     # method to remove vertex
     def remove_vertex(self, vertex):
         if vertex not in self.adj_list.keys():
@@ -23,6 +27,8 @@ class Graph:
         del self.adj_list[vertex]
         return True
 
+# ------------ add edge -------------
+
     # method to add edge
     def add_edge(self, vertex1, vertex2):
         # check if vertices exist in the map
@@ -32,6 +38,8 @@ class Graph:
         self.adj_list[vertex1].append(vertex2)
         self.adj_list[vertex2].append(vertex1)
         return True
+
+# ------------ remove edge -------------
 
     # method remove edge 
     def remove_edge(self, vertex1, vertex2):
@@ -46,6 +54,8 @@ class Graph:
             pass
 
         return True
+
+# ------------ print graph -------------
 
     # method to print the adjacency list
     def print(self):
@@ -64,6 +74,13 @@ my_graph.add_vertex('C')
 my_graph.add_vertex('D')
 my_graph.print()
 
+"""
+A : []
+B : []
+C : []
+D : []
+"""
+
 # Add edges
 my_graph.add_edge('A', 'B')
 my_graph.add_edge('A', 'C')
@@ -73,10 +90,30 @@ my_graph.add_edge('B', 'D')
 my_graph.add_edge('C', 'D')
 my_graph.print()
 
+"""
+A : ['B', 'C', 'D']
+B : ['A', 'C', 'D']
+C : ['A', 'B', 'D']
+D : ['A', 'B', 'C']
+"""
+
 # Remove edge
 my_graph.remove_edge('B', 'C')
 my_graph.print()
 
+"""
+A : ['B', 'C', 'D']
+B : ['A', 'D']
+C : ['A', 'D']
+D : ['A', 'B', 'C']
+"""
+
 # Remove vertices
 my_graph.remove_vertex('D')
 my_graph.print()
+
+"""
+A : ['B', 'C']
+B : ['A']
+C : ['A']
+"""
