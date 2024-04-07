@@ -76,6 +76,28 @@ class BinarySearchTree:
             
         return False
 
+# ------------- breadth first search --------------
+    
+    def bfs(self):
+        current_node = self.root
+        # a list to store all the elements
+        visited_nodes = []
+
+        queue = []
+        queue.append(current_node)
+
+        while queue:
+            current_node = queue.pop(0)
+            visited_nodes.append(current_node.value)
+
+            if current_node.left is not None:
+                queue.append(current_node.left)
+
+            if current_node.right is not None:
+                queue.append(current_node.right)
+            
+        return visited_nodes
+
 # ------------- depth first search (pre-order) --------------
 # In pre-order traversal, we store the nodes as we traverse along the tree
     
@@ -156,6 +178,7 @@ print(my_tree.root.right.value)     # 76
 print(my_tree.contains(52))         # True         
 print(my_tree.contains(9))          # False
 
+print(my_tree.bfs())                # [47, 21, 76, 18, 27, 52, 82]
 print(my_tree.dfs_pre_order())      # [47, 21, 18, 27, 76, 52, 82]
 print(my_tree.dfs_post_order())     # [18, 27, 21, 52, 82, 76, 47]
-print(my_tree.dfs_in_order())       # [18, 21, 27, 47, 56, 76, 82]
+print(my_tree.dfs_in_order())       # [18, 21, 27, 47, 52, 76, 82]
